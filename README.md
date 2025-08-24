@@ -4,8 +4,7 @@ Welcome to the source code for my personal portfolio website!
 
 ## Project Info
 
-**Live URL:** [[https://ridamgoyal-folio.vercel.app](https://ridamgoyal-folio.lovable.app/)]([https://ridamgoyal-folio.vercel.app](https://ridamgoyal-folio.lovable.app/))
-
+**Live URL:** [[https://ridamgoyal-folio.vercel.app](https://ridamgoyal-folio.lovable.app/)]
 ## How to Run Locally
 
 You can edit, customize, or run this portfolio locally using your favorite code editor.
