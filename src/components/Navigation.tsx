@@ -33,109 +33,100 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-lg shadow-soft' : 'bg-transparent'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'glass-card shadow-glow' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-xl font-bold gradient-text hover:scale-105 transition-transform duration-300"
-            >
-              Ridam Goyal
-            </button>
-          </div>
-          
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-3xl font-bold gradient-text hover:scale-110 transition-all duration-300 text-shadow"
+          >
+            Ridam Goyal
+          </button>
+
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-foreground/80 hover:text-primary px-3 py-2 text-sm font-medium transition-colors duration-300 hover:scale-105"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => window.open('https://github.com/CoderRdm', '_blank')}
-            >
-              <Github className="w-4 h-4" />
-            </Button>
-            <Button 
-              variant="default" 
-              size="sm"
-              onClick={() => window.open('mailto:goyalridam2005@gmail.com')}
-            >
-              <Mail className="w-4 h-4" />
-              Contact
-            </Button>
-          </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-          </div>
-        </div>
-      </div>
-      
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-background/95 backdrop-blur-lg shadow-soft">
+          <div className="hidden md:flex items-center space-x-12">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-foreground/80 hover:text-primary block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+                className="text-foreground hover:text-primary transition-all duration-300 font-semibold text-lg relative group"
               >
                 {item.label}
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
-            <div className="flex space-x-2 px-3 py-2">
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="flex-1"
-                onClick={() => {
-                  window.open('https://github.com/CoderRdm', '_blank');
-                  setIsOpen(false);
-                }}
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </Button>
-              <Button 
-                variant="default" 
-                size="sm"
-                className="flex-1"
-                onClick={() => {
-                  window.open('mailto:goyalridam2005@gmail.com');
-                  setIsOpen(false);
-                }}
-              >
-                <Mail className="w-4 h-4" />
-                Contact
-              </Button>
+          </div>
+
+          {/* Desktop CTA Buttons */}
+          <div className="hidden md:flex items-center space-x-6">
+            <Button
+              variant="ghost"
+              size="lg"
+              className="hover:bg-primary/10 hover:scale-110 transition-all duration-300"
+              onClick={() => window.open('https://github.com/CoderRdm', '_blank')}
+            >
+              <Github className="h-6 w-6" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              className="glass-card hover:bg-primary/10 hover:scale-105 transition-all duration-300"
+              onClick={() => window.open('mailto:goyalridam2005@gmail.com', '_blank')}
+            >
+              <Mail className="mr-2 h-5 w-5" />
+              Contact
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-3 rounded-xl hover:bg-primary/10 transition-all duration-300 glass-card"
+          >
+            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden py-6 glass-card mt-2 rounded-2xl animate-slide-up">
+            <div className="flex flex-col space-y-6">
+              {navItems.map((item, index) => (
+                <button
+                  key={item.label}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-foreground hover:text-primary transition-all duration-300 font-semibold text-lg text-left px-4 py-2 hover:bg-primary/10 rounded-lg"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <div className="flex space-x-4 pt-4 px-4">
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="flex-1 hover:bg-primary/10"
+                  onClick={() => window.open('https://github.com/CoderRdm', '_blank')}
+                >
+                  <Github className="h-5 w-5" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1 glass-card hover:bg-primary/10"
+                  onClick={() => window.open('mailto:goyalridam2005@gmail.com', '_blank')}
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Contact
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 };

@@ -8,46 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 30% 97%;
-    --foreground: 220 15% 15%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 217 91% 70%;
-    --primary-dark: 217 91% 45%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 263 70% 65%;
+    --primary-dark: 263 70% 35%;
 
-    --secondary: 220 20% 95%;
-    --secondary-foreground: 220 15% 25%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 142 76% 46%;
+    --accent: 197 71% 52%;
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 197 71% 67%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 90%;
-    --input: 220 15% 92%;
-    --ring: 217 91% 60%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 263 70% 50%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 30% 97%), hsl(217 91% 98%));
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 20% 99%));
+    --gradient-primary: linear-gradient(135deg, hsl(263 70% 50%), hsl(197 71% 52%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 10% 3.9%) 0%, hsl(263 70% 10%) 50%, hsl(197 71% 15%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(240 3.7% 15.9%), hsl(240 10% 8%));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(263 70% 50% / 0.1), transparent 70%);
+    --gradient-mesh: conic-gradient(from 0deg at 50% 50%, hsl(263 70% 50% / 0.1), hsl(197 71% 52% / 0.1), hsl(263 70% 50% / 0.1));
     
-    --shadow-soft: 0 4px 6px -1px hsl(220 15% 15% / 0.1), 0 2px 4px -1px hsl(220 15% 15% / 0.06);
-    --shadow-medium: 0 10px 15px -3px hsl(220 15% 15% / 0.1), 0 4px 6px -2px hsl(220 15% 15% / 0.05);
-    --shadow-large: 0 20px 25px -5px hsl(220 15% 15% / 0.1), 0 10px 10px -5px hsl(220 15% 15% / 0.04);
+    --shadow-soft: 0 4px 6px -1px hsl(263 70% 50% / 0.1), 0 2px 4px -1px hsl(263 70% 50% / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(263 70% 50% / 0.1), 0 4px 6px -2px hsl(263 70% 50% / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(263 70% 50% / 0.2), 0 10px 10px -5px hsl(263 70% 50% / 0.1);
+    --shadow-glow: 0 0 40px hsl(263 70% 50% / 0.15), 0 0 80px hsl(197 71% 52% / 0.1);
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -117,16 +120,50 @@ All colors MUST be HSL.
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-accent to-primary-light bg-clip-text text-transparent;
   }
   
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-medium hover:-translate-y-1;
+    @apply transition-all duration-500 hover:shadow-glow hover:-translate-y-2 hover:scale-[1.02];
   }
   
   .section-padding {
-    @apply px-6 py-16 sm:px-8 lg:px-12;
+    @apply px-6 py-20 sm:px-8 lg:px-16;
   }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-card/80 border border-white/10 shadow-glow;
+  }
+  
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+  
+  .bg-mesh {
+    background: var(--gradient-mesh);
+  }
+  
+  .bg-glow {
+    background: var(--gradient-glow);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
+  100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--accent) / 0.4); }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
