@@ -7,114 +7,138 @@ const Projects = () => {
   const projects = [
     {
       title: "Placement Portal",
-      description: "Streamlined campus recruitment platform serving 3000+ users with secure backend and automation features. Built with modern React ecosystem and deployed on Vercel.",
+      description: "Built this for our college's placement cell. It's handling 3000+ students now, which is way more than I expected. Learned a lot about authentication, handling scale, and why you should plan your database schema properly from the start.",
       icon: Users,
       technologies: ["React.js", "Next.js", "Node.js", "JWT", "Google OAuth", "RBAC", "Vercel"],
       highlights: [
-        "3000+ active users",
-        "JWT & OAuth authentication", 
-        "Role-based access control",
-        "Real-time analytics"
+        "3000+ students using it",
+        "JWT & OAuth setup", 
+        "Role-based permissions",
+        "Basic analytics dashboard"
       ],
       liveDemo: "#",
       github: "#",
       color: "bg-primary"
     },
     {
-      title: "Resume Builder App", 
-      description: "Responsive application with real-time preview capabilities, PostgreSQL backend, and robust authentication using JWT/Clerk. Deployed on AWS with Docker containerization.",
+      title: "Resume Builder", 
+      description: "Made this because I got tired of formatting resumes in Word. You can see changes in real-time, save multiple versions, and export as PDF. The PostgreSQL setup was a pain, but it works now.",
       icon: Smartphone,
-      technologies: ["React.js", "PostgreSQL", "JWT", "Clerk", "AWS", "Docker", "Real-time Preview"],
+      technologies: ["React.js", "PostgreSQL", "JWT", "Clerk", "AWS", "Docker"],
       highlights: [
-        "Real-time preview",
-        "PostgreSQL database",
-        "JWT/Clerk authentication",
-        "Docker containerization"
+        "Live preview while editing",
+        "PostgreSQL for storage",
+        "JWT/Clerk auth",
+        "Docker for deployment"
       ],
       liveDemo: "#",
       github: "#", 
       color: "bg-accent"
+    },{
+      title: "User Trust",
+      description: "A blockchain project I worked on during a hackathon. It's a reputation system on Ethereum - users can rate each other and build trust scores. The gas fees are annoying, but it was fun learning Solidity.",
+      icon: Users,
+      technologies: ["Solidity", "Ethereum", "Web3.js", "JavaScript"],
+      highlights: [
+        "Smart contracts on Ethereum",
+        "Reputation scoring system",
+        "Web3 integration",
+        "Built in 48 hours"
+      ],
+      liveDemo: "#",
+      github: "https://github.com/CoderRdm/sparkathon",
+      color: "bg-primary"
+    },
+    {
+      title: "NightOwl",
+      description: "AI study buddy I built for a hackathon. It helps you figure out what you don't know, creates study plans, and quizzes you. Uses Google's AI APIs - the hardest part was getting the prompts right so it actually helps instead of just being annoying.",
+      icon: Users,
+      technologies: ["GoogleGenAI services", "React", "TypeScript"],
+      highlights: [
+        "Personalized study plans",
+        "AI-generated quizzes",
+        "Conversational tutoring",
+        "Multi-language support"
+      ],
+      liveDemo: "#",
+      github: "https://github.com/CoderRdm/sparkathon",
+      color: "bg-primary"
     }
   ];
 
   return (
-    <section id="projects" className="section-padding bg-background relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-primary/10 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-l from-accent/10 to-transparent rounded-full blur-3xl" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Featured <span className="gradient-text">Projects</span>
+    <section id="projects" className="section-padding bg-background">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Featured <span className="text-primary">Projects</span>
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            Showcasing some of my best work and technical achievements that demonstrate my passion for creating impactful solutions
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Here's some stuff I've built. Some worked out well, others taught me what not to do.
           </p>
-          <div className="w-32 h-1 bg-gradient-primary mx-auto rounded-full mt-8"></div>
+          <div className="w-24 h-0.5 bg-primary mx-auto mt-6"></div>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
-          {projects.map((project, index) => {
+        <div className="grid lg:grid-cols-2 gap-8">
+          {projects.map((project) => {
             const IconComponent = project.icon;
             return (
               <Card 
                 key={project.title}
-                className="glass-card border-white/10 shadow-glow card-hover animate-slide-up group"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="card-hover border-2 h-full flex flex-col"
               >
-                <div className="p-10">
-                  <div className="flex items-center mb-8">
-                    <div className={`p-4 rounded-2xl ${project.color} mr-4 group-hover:scale-110 transition-transform pulse-glow`}>
-                      <IconComponent className="h-8 w-8 text-white" />
+                <div className="p-8 flex flex-col flex-1">
+                  <div className="flex items-center mb-6">
+                    <div className={`p-4 rounded-xl ${project.color} mr-4 shadow-lg`}>
+                      <IconComponent className="h-6 w-6 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
+                    <h3 className="text-2xl font-bold text-foreground">{project.title}</h3>
                   </div>
                   
-                  <p className="text-foreground/70 mb-8 leading-relaxed text-lg">
+                  <p className="text-muted-foreground mb-6 leading-relaxed text-base flex-1">
                     {project.description}
                   </p>
                   
-                  <div className="space-y-4 mb-8">
-                    <h4 className="font-semibold text-foreground text-lg">Key Features:</h4>
+                  <div className="space-y-3 mb-6">
+                    <h4 className="font-semibold text-foreground text-sm uppercase tracking-wide">Key Features</h4>
                     <div className="grid grid-cols-2 gap-3">
                       {project.highlights.map((highlight) => (
-                        <div key={highlight} className="flex items-center gap-3 group/highlight hover:translate-x-2 transition-transform">
-                          <div className="w-3 h-3 bg-gradient-primary rounded-full group-hover/highlight:scale-125 transition-transform" />
-                          <span className="text-foreground/80 font-medium">{highlight}</span>
+                        <div key={highlight} className="flex items-start gap-2">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-sm text-muted-foreground leading-relaxed">{highlight}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                   
-                  <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
                       <Badge 
                         key={tech} 
                         variant="secondary" 
-                        className="bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors px-3 py-1"
+                        className="px-3 py-1.5 text-xs font-medium"
                       >
                         {tech}
                       </Badge>
                     ))}
                   </div>
                   
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 mt-auto">
                     <Button 
                       size="lg"
-                      className="flex-1 group/btn"
+                      className="flex-1 font-semibold"
                       onClick={() => window.open(project.liveDemo, '_blank')}
                     >
-                      <ExternalLink className="mr-2 h-5 w-5 group-hover/btn:rotate-12 transition-transform" />
+                      <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
                     </Button>
                     <Button 
                       variant="outline" 
                       size="lg"
-                      className="flex-1 glass-card hover:bg-primary/10"
+                      className="flex-1 font-semibold"
                       onClick={() => window.open(project.github, '_blank')}
                     >
-                      <Github className="mr-2 h-5 w-5" />
+                      <Github className="mr-2 h-4 w-4" />
                       GitHub
                     </Button>
                   </div>

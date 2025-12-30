@@ -4,8 +4,8 @@ import {
   Server, 
   Database, 
   Wrench, 
-  BookOpen,
-  Layers
+  Shield,
+  Zap
 } from "lucide-react";
 
 const Skills = () => {
@@ -13,7 +13,7 @@ const Skills = () => {
     {
       title: "Frontend",
       icon: Code,
-      skills: ["React.js", "Next.js", "Redux", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+      skills: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
       color: "text-primary"
     },
     {
@@ -25,20 +25,26 @@ const Skills = () => {
     {
       title: "Databases",
       icon: Database, 
-      skills: ["PostgreSQL", "MongoDB", "MySQL"],
+      skills: ["PostgreSQL"],
       color: "text-primary"
     },
     {
-      title: "Tools",
-      icon: Wrench,
-      skills: ["Git", "Docker", "AWS", "Vercel"],
+      title: "Authentication",
+      icon: Shield,
+      skills: ["JWT", "Google OAuth", "Clerk", "RBAC"],
       color: "text-accent"
     },
     {
-      title: "Core Concepts",
-      icon: BookOpen,
-      skills: ["OOP", "DBMS", "Authentication", "DSA"],
+      title: "Blockchain & AI",
+      icon: Zap,
+      skills: ["Solidity", "Ethereum", "Web3.js", "GoogleGenAI", "AI"],
       color: "text-primary"
+    },
+    {
+      title: "Tools & Deployment",
+      icon: Wrench,
+      skills: ["Git", "Docker", "AWS", "Vercel"],
+      color: "text-accent"
     }
   ];
 
@@ -46,36 +52,35 @@ const Skills = () => {
     <section id="skills" className="section-padding bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Technical <span className="gradient-text">Skills</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Technical <span className="text-primary">Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
+          <div className="w-24 h-0.5 bg-primary mx-auto" />
           <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern, scalable web applications
+            Technologies I've actually used in my projects
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => {
+          {skillCategories.map((category) => {
             const IconComponent = category.icon;
             return (
               <Card 
                 key={category.title}
-                className={`p-6 bg-gradient-card border-0 shadow-soft card-hover animate-fade-in`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="p-6 card-hover border-2 h-full"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-2 rounded-lg bg-background ${category.color}`}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`p-3 rounded-xl bg-background ${category.color} shadow-md`}>
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
+                  <h3 className="text-xl font-bold">{category.title}</h3>
                 </div>
                 
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span 
                       key={skill}
-                      className="px-3 py-1 bg-background border border-border rounded-md text-sm font-medium hover:border-primary transition-colors duration-300"
+                      className="px-3 py-1.5 bg-background border-2 border-border rounded-lg text-sm font-medium hover:border-primary hover:bg-primary/5 transition-all duration-300"
                     >
                       {skill}
                     </span>

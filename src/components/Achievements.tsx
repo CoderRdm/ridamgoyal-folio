@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trophy, Code, DollarSign, Award } from "lucide-react";
+import { Trophy, Code, DollarSign, Award, GitBranch } from "lucide-react";
 
 const Achievements = () => {
   const achievements = [
@@ -8,16 +8,16 @@ const Achievements = () => {
       title: "TechExcel Hackathon - 2nd Place",
       organization: "MNIT Jaipur",
       date: "March 2025",
-      description: "Secured 2nd position in competitive hackathon among 100+ teams",
+      description: "Came in 2nd place out of 100+ teams. We built NightOwl in 48 hours and somehow it worked.",
       icon: Trophy,
       color: "text-yellow-600",
       bgColor: "bg-yellow-50"
     },
     {
-      title: "200+ LeetCode Problems Solved",
+      title: "300+ LeetCode Problems Solved",
       organization: "LeetCode Platform",
       date: "Ongoing",
-      description: "Consistent problem-solving with focus on algorithms and data structures",
+      description: "Been grinding LeetCode for a while now. Still can't solve some hard problems, but getting better.",
       icon: Code,
       color: "text-green-600", 
       bgColor: "bg-green-50"
@@ -26,19 +26,29 @@ const Achievements = () => {
       title: "2⭐ CodeChef Rating",
       organization: "CodeChef",
       date: "Current",
-      description: "Achieved 2-star rating through competitive programming excellence",
+      description: "Got to 2 stars on CodeChef. Competitive programming is tough, but it's good practice.",
       icon: Award,
       color: "text-blue-600",
       bgColor: "bg-blue-50"
     },
     {
-      title: "Finance Secretary",
+      title: "Overall Coordinator",
       organization: "Code to Career Club, MNIT",
       date: "Current Position",
-      description: "Managed ₹50,000+ budget and organized 5+ technical workshops",
+      description: "Running the Code to Career club at MNIT. Organizing events, workshops, and trying to help other students learn.",
       icon: DollarSign,
       color: "text-purple-600",
       bgColor: "bg-purple-50"
+    },
+    {
+      title: "Open Source Contributor",
+      organization: "Hacktoberfest & GitHub",
+      date: "2024",
+      description: "Contributed to open source projects during Hacktoberfest. Got the Pull Shark achievement on GitHub for my contributions.",
+      icon: GitBranch,
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
+      link: "https://github.com/users/CoderRdm/achievements/pull-shark"
     }
   ];
 
@@ -46,23 +56,24 @@ const Achievements = () => {
     <section id="achievements" className="section-padding bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Achievements & <span className="gradient-text">Leadership</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Achievements & <span className="text-primary">Leadership</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full" />
+          <div className="w-24 h-0.5 bg-primary mx-auto" />
           <p className="text-lg text-muted-foreground mt-6 max-w-2xl mx-auto">
-            Recognition for technical excellence and leadership contributions
+            Some things I'm proud of, and a few positions I've held
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-6">
-          {achievements.map((achievement, index) => {
+          {achievements.map((achievement) => {
             const IconComponent = achievement.icon;
+            const hasLink = 'link' in achievement && achievement.link;
             return (
               <Card 
                 key={achievement.title}
-                className={`p-6 bg-gradient-card border-0 shadow-soft card-hover animate-fade-in`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`p-6 card-hover ${hasLink ? 'cursor-pointer' : ''}`}
+                onClick={hasLink ? () => window.open((achievement as any).link, '_blank') : undefined}
               >
                 <div className="flex items-start gap-4">
                   <div className={`p-3 rounded-xl ${achievement.bgColor} ${achievement.color} flex-shrink-0`}>
@@ -79,9 +90,16 @@ const Achievements = () => {
                       {achievement.description}
                     </p>
                     
-                    <Badge variant="secondary" className="px-3 py-1">
-                      {achievement.date}
-                    </Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="secondary" className="px-3 py-1">
+                        {achievement.date}
+                      </Badge>
+                      {hasLink && (
+                        <Badge variant="outline" className="px-3 py-1 text-xs">
+                          Verify →
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Card>

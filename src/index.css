@@ -120,50 +120,28 @@ All colors MUST be HSL.
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-accent to-primary-light bg-clip-text text-transparent;
+    @apply text-primary;
   }
   
   .card-hover {
-    @apply transition-all duration-500 hover:shadow-glow hover:-translate-y-2 hover:scale-[1.02];
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
   
   .section-padding {
-    @apply px-6 py-20 sm:px-8 lg:px-16;
+    @apply px-6 py-24 sm:px-8 lg:px-16;
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-card/80 border border-white/10 shadow-glow;
+    @apply bg-card border border-border;
   }
   
-  .floating-animation {
-    animation: float 6s ease-in-out infinite;
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
   
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite alternate;
+  p {
+    @apply leading-relaxed;
   }
-  
-  .text-shadow {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
-  }
-  
-  .bg-mesh {
-    background: var(--gradient-mesh);
-  }
-  
-  .bg-glow {
-    background: var(--gradient-glow);
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
-  100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8), 0 0 60px hsl(var(--accent) / 0.4); }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
