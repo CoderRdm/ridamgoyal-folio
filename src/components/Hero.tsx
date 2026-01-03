@@ -4,7 +4,7 @@ import { Github, Mail, ChevronDown } from "lucide-react";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
-      {/* Subtle Background Gradient */}
+      {/* Subtle Background Gradienthg */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/10" />
       
       {/* Content */}
