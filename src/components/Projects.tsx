@@ -16,8 +16,8 @@ const Projects = () => {
         "Role-based permissions",
         "Basic analytics dashboard"
       ],
-      liveDemo: "#",
-      github: "#",
+      liveDemo: "https://placement-2sof.vercel.app/",
+      github: "https://github.com/CoderRdm/deploy2",
       color: "bg-primary"
     },
     {
@@ -32,7 +32,7 @@ const Projects = () => {
         "Docker for deployment"
       ],
       liveDemo: "#",
-      github: "#", 
+      github: "https://github.com/CoderRdm/TechExcel_NextJs", 
       color: "bg-accent"
     },{
       title: "User Trust",
@@ -61,7 +61,7 @@ const Projects = () => {
         "Multi-language support"
       ],
       liveDemo: "#",
-      github: "https://github.com/CoderRdm/sparkathon",
+      github: "https://github.com/CoderRdm/Gemini-Hackathon",
       color: "bg-primary"
     }
   ];
@@ -124,14 +124,21 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex gap-4 mt-auto">
-                    <Button 
-                      size="lg"
-                      className="flex-1 font-semibold"
-                      onClick={() => window.open(project.liveDemo, '_blank')}
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Live Demo
-                    </Button>
+                  <Button
+  size="lg"
+  className="flex-1 font-semibold"
+  onClick={() => {
+    if (project.liveDemo === '#') {
+      alert('Live demo not available right now');
+      return;
+    }
+    window.open(project.liveDemo, '_blank');
+  }}
+>
+  <ExternalLink className="mr-2 h-4 w-4" />
+  Live Demo
+</Button>
+
                     <Button 
                       variant="outline" 
                       size="lg"
