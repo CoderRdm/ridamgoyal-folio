@@ -14,11 +14,11 @@ const Hero = () => {
             <span className="text-foreground">Ridam Goyal</span>
           </h1>
           <p className="text-2xl md:text-3xl text-muted-foreground mb-4 font-medium">
-            Building things on the web
+            Full-stack developer building AI-powered applications
           </p>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Currently studying Electrical Engineering at MNIT Jaipur, but I spend most of my time coding. 
-            I build web apps, solve problems, and occasionally break things (then fix them).
+            Final-year Electrical Engineering student at MNIT Jaipur and Software Engineering Intern at Wells Fargo.
+            I build thoughtful products across the stack, from LLM integrations to deployment.
           </p>
         </div>
         
